@@ -175,7 +175,7 @@ Previously rules were generated from the list in the Mozilla source
 http://lxr.mozilla.org/mozilla/source/netwerk/dns/src/effective_tld_names.dat?raw=1
 The publicsuffix.org list now supersceeds the Mozilla list.
 
-Additional reasearch was done via the Wikipedia (for example
+Additional research was done via the Wikipedia (for example
 http://en.wikipedia.org/wiki/.uk ) and by consulting the actual NICs
 that assign domains (for example http://www.kenic.or.ke/ ).
 

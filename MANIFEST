@@ -1,0 +1,12 @@
+Changes
+Makefile.PL
+MANIFEST
+PublicSuffix.xs
+README
+t/Net-Domain-PublicSuffix.t
+t/01dontcrash.t
+t/basedomain.t
+t/basedomain2.t
+t/has_valid_tld.t
+t/publicsuffix.t
+lib/Net/Domain/PublicSuffix.pm

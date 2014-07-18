@@ -1,0 +1,6 @@
+Revision history for Perl extension Net::Domain::PublicSuffix.
+
+0.01  Tue May 27 15:54:36 2014
+	- original version; created by h2xs 1.23 with options
+		--use-new-tests -n Net::Domain::PublicSuffix
+

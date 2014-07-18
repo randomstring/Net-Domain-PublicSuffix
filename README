@@ -71,7 +71,7 @@ Rule Data
     http://lxr.mozilla.org/mozilla/source/netwerk/dns/src/effective_tld_name
     s.dat?raw=1 The publicsuffix.org list now supersceeds the Mozilla list.
 
-    Additional reasearch was done via the Wikipedia (for example
+    Additional research was done via the Wikipedia (for example
     http://en.wikipedia.org/wiki/.uk ) and by consulting the actual NICs
     that assign domains (for example http://www.kenic.or.ke/ ).
 

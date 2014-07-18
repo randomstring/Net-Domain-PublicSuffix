@@ -1,5 +1,6 @@
 NAME
-    Basedomain - Fast XS implementation of base_domain
+    Net::Domain::PublicSuffix - Fast XS implementation of public_suffix and
+    base_domain
 
 SYNOPSIS
      use Net::Domain::PublicSuffix qw(base_domain public_suffix);
@@ -20,8 +21,8 @@ SYNOPSIS
      # $d6 eq "" because .zz is not a valid TLD
 
 DESCRIPTION
-    Basedomain finds the base domain, or top level domain (TLD), of a
-    hostname name.
+    Net::Domain::PublicSuffix finds the public suffix, or top level domain
+    (TLD), of a given hostname name.
 
   $tld = base_domain($hostname)
     Given a hostname return the TLD (top level domain).

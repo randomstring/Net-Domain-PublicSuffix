@@ -1,6 +1,6 @@
 =head1 NAME
 
-Basedomain - Fast XS implementation of base_domain
+Net::Domain::PublicSuffix - Fast XS implementation of public_suffix and base_domain
 
 =head1 SYNOPSIS
 
@@ -23,7 +23,8 @@ Basedomain - Fast XS implementation of base_domain
 
 =head1 DESCRIPTION
 
-Basedomain finds the base domain, or top level domain (TLD), of a hostname name.
+Net::Domain::PublicSuffix finds the public suffix, or top level domain
+(TLD), of a given hostname name.
 
 =head2 $tld = base_domain($hostname)
 

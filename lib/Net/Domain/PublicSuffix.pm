@@ -172,7 +172,7 @@ list from publicsuffix.org and can be found at
 https://publicsuffix.org/list/effective_tld_names.dat
 
 Previously rules were generated from the list in the Mozilla source
-http://lxr.mozilla.org/mozilla/source/netwerk/dns/src/effective_tld_names.dat?raw=1
+http://lxr.mozilla.org/mozilla/source/netwerk/dns/src/effective_tld_names.dat
 The publicsuffix.org list now supersceeds the Mozilla list.
 
 Additional research was done via the Wikipedia (for example

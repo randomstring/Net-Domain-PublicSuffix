@@ -28,7 +28,9 @@ Net::Domain::PublicSuffix - Fast XS implementation of public\_suffix and base\_d
 Net::Domain::PublicSuffix finds the public suffix, or top level domain
 (TLD), of a given hostname name.
 
-## $public\_suffix = public\_suffix($hostname)
+## public\_suffix()
+
+$public\_suffix = public\_suffix($hostname)
 
 Given a hostname return the TLD (top level domain). Returns the empty
 string for hostnames with an invalid public suffix.
@@ -40,7 +42,9 @@ are just wrong. For instance, publicsuffix.org thing that
 "example.example" (a non-existance TLD) should pass, but "test.om" (a
 non-existant second level domain for the valid TLD om) should not.
 
-## $tld = base\_domain($hostname)
+## base\_domain()
+
+$tld = base\_domain($hostname)
 
 Given a hostname return the TLD (top level domain).
 
@@ -55,13 +59,17 @@ base\_domain("com.bd") will return "com.bd" but public\_suffix("com.bd")
 will return "" (empty string) because the TLD rules stipulate there
 should be a third level (i.e. "foo.com.bd") to be valid.
 
-## $bool = has\_valid\_tld($hostname)
+## has\_valid\_tld()
+
+$bool = has\_valid\_tld($hostname)
 
 Returns true if the domain of the provided string exists in the list
 of valid top level domains. The list of valid domains is constructed
 from the list of public\_suffix rules.
 
-## @tld\_list = all\_valid\_tlds();
+## all\_valid\_tlds()
+
+@tld\_list = all\_valid\_tlds();
 
 Return a list of all valid top level domains.
 

@@ -29,7 +29,9 @@ Net::Domain::PublicSuffix - Fast XS implementation of public_suffix and base_dom
 Net::Domain::PublicSuffix finds the public suffix, or top level domain
 (TLD), of a given hostname name.
 
-=head2 $public_suffix = public_suffix($hostname)
+=head2 public_suffix()
+
+$public_suffix = public_suffix($hostname)
 
 Given a hostname return the TLD (top level domain). Returns the empty
 string for hostnames with an invalid public suffix.
@@ -41,7 +43,9 @@ are just wrong. For instance, publicsuffix.org thing that
 "example.example" (a non-existance TLD) should pass, but "test.om" (a
 non-existant second level domain for the valid TLD om) should not.
 
-=head2 $tld = base_domain($hostname)
+=head2 base_domain()
+
+$tld = base_domain($hostname)
 
 Given a hostname return the TLD (top level domain).
 
@@ -77,7 +81,9 @@ my @rules;       # list of domains
 my %tree;        # TRIE of all domain, domains read right to left in hash
 my %valid_tlds;  # hash of all public suffix/domains
 
-=head2 $bool = has_valid_tld($hostname)
+=head2 has_valid_tld()
+
+$bool = has_valid_tld($hostname)
 
 Returns true if the domain of the provided string exists in the list
 of valid top level domains. The list of valid domains is constructed
@@ -98,7 +104,9 @@ sub has_valid_tld
     return (exists $valid_tlds{$tld} ? 1 : 0);
 }
 
-=head2 @tld_list = all_valid_tlds();
+=head2 all_valid_tlds()
+
+@tld_list = all_valid_tlds();
 
 Return a list of all valid top level domains.
 
@@ -169,20 +177,20 @@ sub gen_basedomain_tree
 
 The list of TLD rules is generated primarily from the Public Suffic
 list from publicsuffix.org and can be found at
-https://publicsuffix.org/list/effective_tld_names.dat
+L<https://publicsuffix.org/list/effective_tld_names.dat>
 
 Previously rules were generated from the list in the Mozilla source
-http://lxr.mozilla.org/mozilla/source/netwerk/dns/src/effective_tld_names.dat
+L<http://lxr.mozilla.org/mozilla/source/netwerk/dns/src/effective_tld_names.dat>
 The publicsuffix.org list now supersceeds the Mozilla list.
 
 Additional research was done via the Wikipedia (for example
-http://en.wikipedia.org/wiki/.uk ) and by consulting the actual NICs
-that assign domains (for example http://www.kenic.or.ke/ ).
+L<http://en.wikipedia.org/wiki/.uk>) and by consulting the actual NICs
+that assign domains (for example L<http://www.kenic.or.ke/>).
 
 =head2 .us rules
 
 The United States of America has some unique rule formats (see
-http://en.wikipedia.org/wiki/.us ). Including wildcards in the middle
+L<http://en.wikipedia.org/wiki/.us>). Including wildcards in the middle
 of the TLD. For example in the pattern ci.<locality>.<state>.us,
 <state> is one of a fixed set of valid state abreviations, but
 <locality> is effectively a wildcard city/town/county/etc, followed by
@@ -196,7 +204,7 @@ honors wildcards mid-pattern.
 
 There are some rules that Net::Domain::PublicSuffix has added to the
 list of rules from publicsuffix.org. These rules are the result of
-additional research. For instance http://en.wikipedia.org/wiki/.mt
+additional research. For instance L<http://en.wikipedia.org/wiki/.mt>
 lists gov.mt as a valid TLD, but it is missing from the
 publicsuffix.org list.
 

@@ -3,7 +3,7 @@ Makefile.PL
 MANIFEST
 PublicSuffix.xs
 README.md
-t/Net-Domain-PublicSuffix.t
+t/00Net-Domain-PublicSuffix.t
 t/01dontcrash.t
 t/basedomain.t
 t/basedomain2.t

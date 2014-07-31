@@ -2,7 +2,7 @@ Changes
 Makefile.PL
 MANIFEST
 PublicSuffix.xs
-README
+README.md
 t/Net-Domain-PublicSuffix.t
 t/01dontcrash.t
 t/basedomain.t

@@ -2,7 +2,7 @@ use Test::More qw(no_plan);
 use Net::Domain::PublicSuffix;
 use strict;
 
-# test that high bit chars don't crash Basedomain
+# test that high bit chars don't crash PublicSuffix
 my $bn = Net::Domain::PublicSuffix::base_domain("\372\137\305\351\124\62\41\350\64\220\241\260\127\234\367\367");
 (defined $bn ? ok(1) : ok(0));
 

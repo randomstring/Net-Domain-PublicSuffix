@@ -77,9 +77,9 @@ use XSLoader;
 XSLoader::load "Net::Domain::PublicSuffix", $VERSION;
 
 my $initialized = 0;
-my @rules;       # list of domains
-my %tree;        # TRIE of all domain, domains read right to left in hash
-my %valid_tlds;  # hash of all public suffix/domains
+my @default_rules; # list of domains
+my %tree;          # TRIE of all domain, domains read right to left in hash
+my %valid_tlds;    # hash of all public suffix/domains
 
 =head2 has_valid_tld()
 
@@ -118,6 +118,9 @@ sub all_valid_tlds
     return keys %valid_tlds;
 }
 
+my @special_rules;
+my @publicsuffix_rules;
+
 =head2 gen_basedomain_tree()
 
 Initialize the base domain trie. This function will get called the
@@ -128,6 +131,21 @@ code.
 =cut
 sub gen_basedomain_tree
 {
+    my (%opts) = @_;
+
+    my @rules;
+    if ( $opts{special_rules_only} )
+    {
+        @rules = @special_rules;
+    }
+    elsif ( $opts{publicsuffix_rules_only} )
+    {
+        @rules = @publicsuffix_rules;
+    }
+    else
+    {
+        @rules = @default_rules;
+    }
     return warn('@rules is empty') if !@rules;
     return \%tree if $initialized;
 
@@ -231,10 +249,10 @@ hostnames. Hostnames need to be decoded before calling base_domain().
 # default is two level domains, no need to specify.
 # http://www.information.aero/registration/policies/Release_of_reserved_names
 
-my @special_rules = split "\n", << '_END_OF_SPECIAL_DATA_';
+@special_rules = split "\n", << '_END_OF_SPECIAL_DATA_';
 
 # .us is "special" see http://en.wikipedia.org/wiki/.us
-us { ak al ar az ca co ct de fl ga hi ia id il in ks ky la md me mi mn mo ms mt nc nd ne nh nj nm nv ny oh ok or pa ri sc sd tn tx ut va vt wa wi wv wy as dc gu pr vi }
+us { ak al ar az ca co ct de fl ga hi ia id il in ks ky la ma md me mi mn mo ms mt nc nd ne nh nj nm nv ny oh ok or pa ri sc sd tn tx ut va vt wa wi wv wy as dc gu pr vi }
 us { ak al ar az ca co ct de fl ga hi ia id il in ks ky la ma md me mi mn mo ms mt nc nd ne nh nj nm nv ny oh ok or pa ri sc sd tn tx ut va vt wa wi wv wy as dc gu pr vi } { * } { city ci town vil village co }
 us { ak al ar az ca co ct de fl ga hi ia id il in ks ky la ma md me mi mn mo ms mt nc nd ne nh nj nm nv ny oh ok or pa ri sc sd tn tx ut va vt wa wi wv wy as dc gu pr vi } { state dst cog k12 cc tec lib mus gen }
 us { ak al ar az ca co ct de fl ga hi ia id il in ks ky la md me mi mn mo ms mt nc nd ne nh nj nm nv ny oh ok or pa ri sc sd tn tx ut va vt wa wi wv wy as dc gu pr vi } { k12 } { pvt }
@@ -242,19 +260,33 @@ us { ma } { k12 } { pvt chtr paroch }
 us { dni fed is-by isa kids land-4-sale nsn stuff-4-sale }
 us { }
 
-# these are left out of the publicsuffix list. I got these from the
-# wikipedia and the controling NIC
-ae { name pro }
-au { gov } { nt }
-bd { ac com edu gov net org }
-bn { com gov }
+## these are left out of the publicsuffix list. I got these from the
+## wikipedia and the controling NIC
+
+## for bd the rule "bd { * }" covers these special cases as only 2 level domains are allowed
+# bd { ac com edu gov net org }
+
+## for bn the rule "bn { * }" covers these special cases as only 2 level domains are allowed
+# bn { com gov }
+
+## can.br are for canidates in elections, maybe ephemeral
 br { can }
+
+## can't find indication that org.by is reserved, but seems to be used as a 2nd level domain in practice
 by { org }
-cc { co }
+
+## cc : http://en.wikipedia.org/wiki/.cc
+cc { com net edu org cc co cu }
+
+## can't find refernce to it, but seems to have a number of legacy 2 level domains on co.cu
 cu { co }
+
 #http://en.wikipedia.org/wiki/.cy
 cy { ac net gov org pro name ekloges tm ltd biz press parliament com }
-gg { gov sch }
+
+## evidence of legacy sch.gg https://www.google.com/search?q=site%3Asch.gg
+gg { sch }
+
 im { gov nic }
 it { barletta-andria-trani barlettaandriatrani }
 je { gov sch }
@@ -298,7 +330,7 @@ uk { parliament } { ! }
 
 _END_OF_SPECIAL_DATA_
 
-my @publicsuffix_rules = split "\n", << '_END_OF_PUBLICSUFFIX_DATA_';
+@publicsuffix_rules = split "\n", << '_END_OF_PUBLICSUFFIX_DATA_';
 ac { }
 ac { com edu gov mil net org }
 academy { }
@@ -338,7 +370,7 @@ associates { }
 at { }
 at { ac biz co gv info or priv }
 at { co } { blogspot }
-au { act asn com conf csiro edu id info net nsw nt org oz qld sa tas vic wa }
+au { act asn com conf edu id info net nsw nt org oz qld sa tas vic wa }
 au { com } { blogspot }
 au { edu } { act nsw nt qld sa tas vic wa }
 au { gov } { act qld sa tas vic wa }
@@ -1226,7 +1258,7 @@ zw { * }
 한국 { }
 _END_OF_PUBLICSUFFIX_DATA_
 
-@rules = (@special_rules, @publicsuffix_rules);
+@default_rules = (@special_rules, @publicsuffix_rules);
 
 
 =head1 AUTHOR

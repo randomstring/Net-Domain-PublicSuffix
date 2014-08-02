@@ -287,14 +287,27 @@ cy { ac net gov org pro name ekloges tm ltd biz press parliament com }
 ## evidence of legacy sch.gg https://www.google.com/search?q=site%3Asch.gg
 gg { sch }
 
-im { gov nic }
-it { barletta-andria-trani barlettaandriatrani }
+## http://en.wikipedia.org/wiki/.it
+## cannot find a conprehensive list, maybe wildcard rules would be better?
+## it { * } { comune provincia regione }
+it { barletta-andria-trani }
+
+## both of these exist in the wild
 je { gov sch }
-jo { myname }
-ke { ac co go or }
-kw { com edu gov }
+
+## covered by publicsuffix *.ke rule
+#ke { ac co go or ne sc me mobi info }
+
+## covered by publicsuffix *.kw rule
+#kw { com edu gov net org }
+
+## publicsuffix is missing ac.lk rule
 lk { ac }
+
+## publicsuffix is missing gov.mt rule
 mt { gov }
+
+## XXX - audit rest of special rules...
 ng { ac }
 ni { com edu }
 no { cáhcesuolo }
@@ -594,6 +607,7 @@ ge { }
 ge { com edu gov mil net org pvt }
 gent { }
 gf { }
+gg { }
 gg { co net org }
 ggee { }
 gh { }
@@ -1258,7 +1272,7 @@ zw { * }
 한국 { }
 _END_OF_PUBLICSUFFIX_DATA_
 
-@default_rules = (@special_rules, @publicsuffix_rules);
+@default_rules = (@publicsuffix_rules, @special_rules);
 
 
 =head1 AUTHOR

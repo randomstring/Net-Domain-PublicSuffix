@@ -59,7 +59,7 @@ my $benchmarks = {
 };
 
 my $iterations = -1;   # let timethis() choose how many iterations
-my $testfile = "tests.raw";
+my $testfile = "benchmark.tests";
 my $verbose = 0;
 my $width = 0;
 my @benchmark = ();

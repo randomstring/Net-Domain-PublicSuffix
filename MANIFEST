@@ -9,4 +9,5 @@ t/basedomain.t
 t/basedomain2.t
 t/has_valid_tld.t
 t/publicsuffix.t
+t/publicsuffix2.t
 lib/Net/Domain/PublicSuffix.pm

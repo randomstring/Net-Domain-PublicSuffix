@@ -76,8 +76,9 @@ my %tests;
 open(my $testfh, '<' , $testfile) or die("cannot open testfile [$testfile] $!");
 foreach my $line (<$testfh>) {
     chomp($line);
+    next if ($line =~ /^\/\//);
     my($host,$tld) = split(/\s+/,$line);
-    $tests{$host} = $tld;
+    $tests{$host} = $tld || '';
 }
 
 @benchmark = keys %{ $benchmarks };
@@ -99,7 +100,7 @@ foreach my $package ( @benchmark ) {
     $benchmark->{init}() if (defined($benchmark->{init}));
 
     $perf_results->{$printname} = time_base_domain($benchmark->{base_domain});
-    $accuracy_results->{$package} = test_base_domain($printname,$benchmark->{base_domain});
+    $accuracy_results->{$printname} = test_base_domain($printname,$benchmark->{base_domain});
 
 }
 
@@ -147,15 +148,16 @@ sub width
 
 # Results
 #
-# Net::Domain::PublicSuffix                 is 100.0% accurate
+# base_domain                               is 100.0% accurate
+# public_suffix                             is 100.0% accurate
 # Domain::PublicSuffix                      is  88.3% accurate
-# IO::Socket::SSL::PublicSuffix             is   0.0% accurate
-# Mozilla::PublicSuffix                     is   0.0% accurate
+# Mozilla                                   is   0.0% accurate
+# SSL::PublicSuffix                         is   0.0% accurate
 #
-#                         Rate Domain::PublicSuffix SSL::PublicSuffix Mozilla base_domain public_suffix
-# Domain::PublicSuffix 0.990/s                   --              -32%    -82%        -97%          -98%
-# SSL::PublicSuffix     1.46/s                  47%                --    -74%        -96%          -96%
-# Mozilla               5.61/s                 466%              284%      --        -86%          -86%
-# base_domain           39.4/s                3882%             2600%    603%          --           -1%
-# public_suffix         39.8/s                3920%             2627%    610%          1%            --
+#                        Rate Domain::PublicSuffix SSL::PublicSuffix Mozilla base_domain public_suffix
+# Domain::PublicSuffix 1.04/s                   --              -30%    -81%        -97%          -97%
+# SSL::PublicSuffix    1.47/s                  42%                --    -74%        -96%          -96%
+# Mozilla              5.56/s                 436%              278%      --        -86%          -86%
+# base_domain          39.4/s                3704%             2581%    610%          --           -1%
+# public_suffix        39.8/s                3741%             2607%    617%          1%            --
 

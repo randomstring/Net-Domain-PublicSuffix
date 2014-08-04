@@ -3,14 +3,20 @@
 use Net::Domain::PublicSuffix qw( base_domain public_suffix );
 use strict;
 
-# Extract new publicsuffix rules from publicsuffix.org.
+# Extract new publicsuffix rules from publicsuffix.org and generate the input
+# data for the Net::Domain::PublicSufix parse TRIE.
 #
 # https://publicsuffix.org/list/effective_tld_names.dat
+#
+# 1. init public_suffix tree with only special rules
+# 2. test each entry of effective_tld_names.dat
+# 3. add rules that fail to the missing list of rules.
+# 4. print out a missing rules, this can be cut-n-pasted into PublicSuffix.pm
 #
 
 my $END_TOK = '@';
 
-my $tld_filename = "effective_tld_names.dat";
+my $tld_filename = "effective_tld_names.dat.new";
 
 my $filename = shift @ARGV;
 if (($filename eq "") || (! -f $filename))
@@ -19,6 +25,12 @@ if (($filename eq "") || (! -f $filename))
 }
 
 open (my $fh, '<', $filename) or die("cannot open TLD source file [$filename] $!");
+
+# only load the special rules
+Net::Domain::PublicSuffix::gen_basedomain_tree( special_rules_only => 1 );
+
+# in case we ever want to see what special rules are missing...
+# Net::Domain::PublicSuffix::gen_basedomain_tree( publicsuffix_rules_only => 1 );
 
 my %missing_tlds;
 
@@ -43,13 +55,12 @@ while($line = <$fh>) {
         $basedomain = $save_basedomain;
         $basedomain =~ s/^\!\.//;
         $hostname = "www.$basedomain";
-        $bn = public_suffix($hostname);
     }
     else {
         $basedomain = "foobar.$basedomain";
         $hostname = "www.$basedomain";
-        $bn = base_domain($hostname);
     }
+    $bn = public_suffix($hostname);
 
     if ($bn ne $basedomain) {
         my @parts = ((reverse split(/\./,$save_basedomain),), $END_TOK);

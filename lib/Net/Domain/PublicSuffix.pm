@@ -298,6 +298,9 @@ mt { gov }
 ## publicsuffix is missing co.nr rule
 nr { co }
 
+# missing .ru rule
+ru { pskov }
+
 # missing .vi rules. .gov.vi is used
 vi { edu gov }
 

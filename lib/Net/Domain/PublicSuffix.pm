@@ -263,12 +263,6 @@ us { }
 ## these are left out of the publicsuffix list. I got these from the
 ## wikipedia and the controling NIC
 
-## for bd the rule "bd { * }" covers these special cases as only 2 level domains are allowed
-# bd { ac com edu gov net org }
-
-## for bn the rule "bn { * }" covers these special cases as only 2 level domains are allowed
-# bn { com gov }
-
 ## can.br are for canidates in elections, maybe ephemeral
 br { can }
 
@@ -295,66 +289,84 @@ it { barletta-andria-trani }
 ## both of these exist in the wild
 je { gov sch }
 
-## covered by publicsuffix *.ke rule
-#ke { ac co go or ne sc me mobi info }
-
-## covered by publicsuffix *.kw rule
-#kw { com edu gov net org }
-
 ## publicsuffix is missing ac.lk rule
 lk { ac }
 
 ## publicsuffix is missing gov.mt rule
 mt { gov }
 
-## XXX - audit rest of special rules...
-ng { ac }
-ni { com edu }
-no { cáhcesuolo }
-np { com gov org }
+## publicsuffix is missing co.nr rule
 nr { co }
-pk { goa }
-se { mil sshn }
-tv { com gov net org }
-# http://en.wikipedia.org/wiki/.uk
-uk { ac co gov jcpc judiciary ltd me mod net nhs nic org plc police sch supremecourt }
+
+# missing .vi rules. .gov.vi is used
 vi { edu gov }
-ye { gov }
-zm { co }
-zw { co }
+
+## for bd the rule "bd { * }" covers these special cases as only 2 level domains are allowed
+# bd { ac com edu gov net org }
+## for bn the rule "bn { * }" covers these special cases as only 2 level domains are allowed
+# bn { com gov }
+## covered by publicsuffix *.ke rule
+#ke { ac co go or ne sc me mobi info }
+## covered by publicsuffix *.kw rule
+#kw { com edu gov net org }
+## covered by publicsuffix *.ni rule
+#ni { com edu }
+## covered by publicsuffix *.np rule
+#np { com gov org }
+## covered by publicsuffix *.ye rule
+#ye { gov }
+## covered by publicsuffix *.zm rule
+#zm { co }
+## covered by publicsuffix *.zw rule
+#zw { co }
 
 # http://en.wikipedia.org/wiki/.za
 # http://www.internet.org.za/slds.html
-za { ac co edu gov law mil nom org }
+# covered by *.za rule
+# za { ac co edu gov law mil nom org agric grondar inca nis }
+# missing school.za rule
+za { school } { ! }
 za { school } { escape fs gp kzn mpm ncape lp nw wcape }
-za { agric grondar inca nis }
 
-mz { teledata } { ! }
-tr { nic } { ! }
-uk { bl } { ! }
-uk { british-library } { ! }
-uk { jet } { ! }
-uk { mod } { ! }
-uk { national-library-scotland } { ! }
-uk { nel } { ! }
-uk { nic } { ! }
-uk { nls } { ! }
-uk { parliament } { ! }
+# http://en.wikipedia.org/wiki/.uk
+# covered by the .uk rule
+#uk { jcpc judiciary mod nic sch supremecourt }
+
+# duplicate publicsuffix rules
+#mz { teledata } { ! }
+#tr { nic } { ! }
+
+# old depreciated rules
+#uk { bl } { ! }
+#uk { british-library } { ! }
+#uk { gov } { ! }
+#uk { jet } { ! }
+#uk { mod } { ! }
+#uk { national-library-scotland } { ! }
+#uk { nel } { ! }
+#uk { nic } { ! }
+#uk { nls } { ! }
+#uk { parliament } { ! }
 
 _END_OF_SPECIAL_DATA_
 
 @publicsuffix_rules = split "\n", << '_END_OF_PUBLICSUFFIX_DATA_';
+abogado { }
 ac { }
 ac { com edu gov mil net org }
 academy { }
+accountants { }
+active { }
 actor { }
 ad { }
 ad { nom }
+ae { }
 ae { ac co gov mil net org sch }
 aero { }
 aero { accident-investigation accident-prevention aerobatic aeroclub aerodrome agents air-surveillance air-traffic-control aircraft airline airport airtraffic ambulance amusement association author ballooning broker caa cargo catering certification championship charter civilaviation club conference consultant consulting control council crew design dgca educator emergency engine engineer entertainment equipment exchange express federation flight freight fuel gliding government groundhandling group hanggliding homebuilt insurance journal journalist leasing logistics magazine maintenance marketplace media microlight modelling navigation parachuting paragliding passenger-association pilot press production recreation repbody res research rotorcraft safety scientist services show skydiving software student taxi trader trading trainer union workinggroup works }
 af { }
 af { com edu gov net org }
+africa { }
 ag { }
 ag { co com net nom org }
 agency { }
@@ -370,7 +382,7 @@ ao { }
 ao { co ed gv it og pb }
 aq { }
 ar { }
-ar { com edu gob int mil net org tur }
+ar { com edu gob gov int mil net org tur }
 ar { com } { blogspot }
 archi { }
 army { }
@@ -383,10 +395,14 @@ associates { }
 at { }
 at { ac biz co gv info or priv }
 at { co } { blogspot }
-au { act asn com conf edu id info net nsw nt org oz qld sa tas vic wa }
+attorney { }
+au { }
+au { act asn com conf edu gov id info net nsw nt org oz qld sa tas vic wa }
 au { com } { blogspot }
 au { edu } { act nsw nt qld sa tas vic wa }
-au { gov } { act qld sa tas vic wa }
+au { gov } { qld sa tas vic wa }
+auction { }
+audio { }
 autos { }
 aw { }
 aw { com }
@@ -398,9 +414,10 @@ ba { }
 ba { co com edu gov mil net org rs unbi unsa }
 bar { }
 bargains { }
+bauhaus { }
 bayern { }
 bb { }
-bb { biz com edu gov info net org store }
+bb { biz co com edu gov info net org store tv }
 bd { * }
 be { }
 be { ac blogspot }
@@ -428,10 +445,13 @@ blue { }
 bm { }
 bm { com edu gov net org }
 bn { * }
+bnpparibas { }
 bo { }
 bo { com edu gob gov int mil net org tv }
+bond { }
 boo { }
 boutique { }
+br { }
 br { adm adv agr am arq art ato b bio blog bmd cim cng cnt com coop ecn eco edu emp eng esp etc eti far flog fm fnd fot fst g12 ggf gov imb ind inf jor jus leg lel mat med mil mp mus net nom not ntr odo org ppg pro psc psi qsl radio rec slg srv taxi teo tmp trd tur tv vet vlog wiki zlg }
 br { com } { blogspot }
 brussels { }
@@ -447,6 +467,7 @@ buzz { }
 bv { }
 bw { }
 bw { co org }
+by { }
 by { com gov mil of }
 bz { }
 bz { com edu gov net org za }
@@ -456,6 +477,8 @@ ca { ab bc blogspot co gc mb nb nf nl ns nt nu on pe qc sk yk }
 cab { }
 camera { }
 camp { }
+cancerresearch { }
+capetown { }
 capital { }
 caravan { }
 cards { }
@@ -465,32 +488,41 @@ casa { }
 cash { }
 cat { }
 catering { }
+cc { }
 cc { ftpaccess game-server myphotos scrapping }
 cd { }
 cd { gov }
 center { }
 ceo { }
+cern { }
 cf { }
 cf { blogspot }
 cg { }
 ch { }
 ch { blogspot }
+channel { }
 cheap { }
 christmas { }
 church { }
 ci { }
 ci { ac asso aéroport co com ed edu go gouv int md net or org presse }
+city { }
 ck { * }
 ck { www } { ! }
 cl { }
 cl { co gob gov mil }
+claims { }
 cleaning { }
+click { }
+clinic { }
 clothing { }
 club { }
 cm { }
-cm { gov }
+cm { co com gov net }
 cn { }
 cn { ac ah bj com cq edu fj gd gov gs gx gz ha hb he hi hk hl hn jl js jx ln mil mo net nm nx org qh sc sd sh sn sx tj tw xj xz yn zj 公司 網絡 网络 }
+cn { amazonaws } { compute }
+cn { amazonaws } { compute } { cn-north-1 }
 co { }
 co { arts com edu firm gov info int mil net nom org rec web }
 codes { }
@@ -498,7 +530,7 @@ coffee { }
 college { }
 cologne { }
 com { }
-com { africa appspot ar betainabox blogdns blogspot br cechire cloudcontrolapp cloudcontrolled cn co codespot de dnsalias dnsdojo doesntexist dontexist doomdns dreamhosters dyn-o-saur dynalias dyndns-at-home dyndns-at-work dyndns-blog dyndns-free dyndns-home dyndns-ip dyndns-mail dyndns-office dyndns-pics dyndns-remote dyndns-server dyndns-web dyndns-wiki dyndns-work elasticbeanstalk est-a-la-maison est-a-la-masion est-le-patron est-mon-blogueur eu from-ak from-al from-ar from-ca from-ct from-dc from-de from-fl from-ga from-hi from-ia from-id from-il from-in from-ks from-ky from-ma from-md from-mi from-mn from-mo from-ms from-mt from-nc from-nd from-ne from-nh from-nj from-nm from-nv from-oh from-ok from-or from-pa from-pr from-ri from-sc from-sd from-tn from-tx from-ut from-va from-vt from-wa from-wi from-wv from-wy gb getmyip githubusercontent googleapis googlecode gotdns gr herokuapp herokussl hobby-site homelinux homeunix hu iamallama is-a-anarchist is-a-blogger is-a-bookkeeper is-a-bulls-fan is-a-caterer is-a-chef is-a-conservative is-a-cpa is-a-cubicle-slave is-a-democrat is-a-designer is-a-doctor is-a-financialadvisor is-a-geek is-a-green is-a-guru is-a-hard-worker is-a-hunter is-a-landscaper is-a-lawyer is-a-liberal is-a-libertarian is-a-llama is-a-musician is-a-nascarfan is-a-nurse is-a-painter is-a-personaltrainer is-a-photographer is-a-player is-a-republican is-a-rockstar is-a-socialist is-a-student is-a-teacher is-a-techie is-a-therapist is-an-accountant is-an-actor is-an-actress is-an-anarchist is-an-artist is-an-engineer is-an-entertainer is-certified is-gone is-into-anime is-into-cars is-into-cartoons is-into-games is-leet is-not-certified is-slick is-uberleet is-with-theband isa-geek isa-hockeynut issmarterthanyou jpn kr likes-pie likescandy mex neat-url no operaunite outsystemscloud qc rhcloud ro ru sa saves-the-whales se selfip sells-for-less sells-for-u servebbs simple-url space-to-rent teaches-yoga uk us uy withgoogle writesthisblog za }
+com { africa appspot ar betainabox blogdns blogspot br cechire cloudcontrolapp cloudcontrolled cn co codespot de dnsalias dnsdojo doesntexist dontexist doomdns dreamhosters dyn-o-saur dynalias dyndns-at-home dyndns-at-work dyndns-blog dyndns-free dyndns-home dyndns-ip dyndns-mail dyndns-office dyndns-pics dyndns-remote dyndns-server dyndns-web dyndns-wiki dyndns-work elasticbeanstalk est-a-la-maison est-a-la-masion est-le-patron est-mon-blogueur eu firebaseapp from-ak from-al from-ar from-ca from-ct from-dc from-de from-fl from-ga from-hi from-ia from-id from-il from-in from-ks from-ky from-ma from-md from-mi from-mn from-mo from-ms from-mt from-nc from-nd from-ne from-nh from-nj from-nm from-nv from-oh from-ok from-or from-pa from-pr from-ri from-sc from-sd from-tn from-tx from-ut from-va from-vt from-wa from-wi from-wv from-wy gb getmyip githubusercontent googleapis googlecode gotdns gr herokuapp herokussl hobby-site homelinux homeunix hu iamallama is-a-anarchist is-a-blogger is-a-bookkeeper is-a-bulls-fan is-a-caterer is-a-chef is-a-conservative is-a-cpa is-a-cubicle-slave is-a-democrat is-a-designer is-a-doctor is-a-financialadvisor is-a-geek is-a-green is-a-guru is-a-hard-worker is-a-hunter is-a-landscaper is-a-lawyer is-a-liberal is-a-libertarian is-a-llama is-a-musician is-a-nascarfan is-a-nurse is-a-painter is-a-personaltrainer is-a-photographer is-a-player is-a-republican is-a-rockstar is-a-socialist is-a-student is-a-teacher is-a-techie is-a-therapist is-an-accountant is-an-actor is-an-actress is-an-anarchist is-an-artist is-an-engineer is-an-entertainer is-certified is-gone is-into-anime is-into-cars is-into-cartoons is-into-games is-leet is-not-certified is-slick is-uberleet is-with-theband isa-geek isa-hockeynut issmarterthanyou jpn kr likes-pie likescandy mex neat-url nfshost no operaunite outsystemscloud qc rhcloud ro ru sa saves-the-whales se selfip sells-for-less sells-for-u servebbs simple-url space-to-rent teaches-yoga uk us uy withgoogle writesthisblog za }
 com { amazonaws } { compute compute-1 elb s3 s3-ap-northeast-1 s3-ap-southeast-1 s3-ap-southeast-2 s3-eu-west-1 s3-fips-us-gov-west-1 s3-sa-east-1 s3-us-gov-west-1 s3-us-west-1 s3-us-west-2 s3-website-ap-northeast-1 s3-website-ap-southeast-1 s3-website-ap-southeast-2 s3-website-eu-west-1 s3-website-sa-east-1 s3-website-us-east-1 s3-website-us-gov-west-1 s3-website-us-west-1 s3-website-us-west-2 us-east-1 }
 com { amazonaws } { compute } { ap-northeast-1 ap-southeast-1 ap-southeast-2 eu-west-1 sa-east-1 us-gov-west-1 us-west-1 us-west-2 }
 com { amazonaws } { compute-1 } { z-1 z-2 }
@@ -515,8 +547,13 @@ coop { }
 country { }
 cr { }
 cr { ac co ed fi go or sa }
+credit { }
+creditcard { }
+crs { }
 cruises { }
+cu { }
 cu { com edu gov inf net org }
+cuisinella { }
 cv { }
 cv { blogspot }
 cw { }
@@ -524,20 +561,26 @@ cw { com edu net org }
 cx { }
 cx { ath gov }
 cy { * }
+cymru { }
 cz { }
 cz { blogspot }
 dabur { }
 dad { }
 dance { }
 dating { }
+datsun { }
 day { }
 de { }
 de { blogspot com fuettertdasnetz isteingeek istmein lebtimnetz leitungsen traeumtgerade }
+deals { }
 degree { }
 democrat { }
+dental { }
+dentist { }
 desi { }
 diamonds { }
 digital { }
+direct { }
 directory { }
 discount { }
 dj { }
@@ -549,6 +592,8 @@ dnp { }
 do { }
 do { art com edu gob gov mil net org sld web }
 domains { }
+doosan { }
+durban { }
 dz { }
 dz { art asso com edu gov net org pol }
 eat { }
@@ -561,18 +606,23 @@ ee { aip com edu fie gov lib med org pri riik }
 eg { }
 eg { com edu eun gov mil name net org sci }
 email { }
+emerck { }
 engineering { }
 enterprises { }
 equipment { }
 er { * }
+erni { }
 es { }
 es { com edu gob nom org }
 es { com } { blogspot }
+esq { }
 estate { }
 et { * }
 eu { }
+eurovision { }
 eus { }
 events { }
+everbank { }
 exchange { }
 expert { }
 exposed { }
@@ -582,7 +632,9 @@ farm { }
 feedback { }
 fi { }
 fi { aland blogspot iki }
+finance { }
 financial { }
+firmdale { }
 fish { }
 fishing { }
 fitness { }
@@ -590,13 +642,18 @@ fj { * }
 fk { * }
 flights { }
 florist { }
+fly { }
 fm { }
 fo { }
 foo { }
+forsale { }
 foundation { }
 fr { }
 fr { aeroport assedic asso avocat avoues blogspot cci chambagri chirurgiens-dentistes com experts-comptables geometre-expert gouv greta huissier-justice medecin nom notaires pharmacien port prd presse tm veterinaire }
+frl { }
 frogans { }
+fund { }
+furniture { }
 futbol { }
 ga { }
 gal { }
@@ -618,8 +675,11 @@ gift { }
 gives { }
 gl { }
 glass { }
+global { }
 globo { }
 gm { }
+gmail { }
+gmx { }
 gn { }
 gn { ac com edu gov net org }
 gop { }
@@ -630,6 +690,8 @@ gq { }
 gr { }
 gr { blogspot com edu gov net org }
 graphics { }
+gratis { }
+green { }
 gripe { }
 gs { }
 gt { }
@@ -655,6 +717,8 @@ holdings { }
 holiday { }
 homes { }
 horse { }
+host { }
+hosting { }
 house { }
 how { }
 hr { }
@@ -670,34 +734,42 @@ ie { blogspot gov }
 ifm { }
 il { * }
 il { co } { blogspot }
+im { }
 im { ac co com net org tt tv }
 im { co } { ltd plc }
 immobilien { }
 in { }
 in { ac blogspot co edu firm gen gov ind mil net nic org res }
 industries { }
+infiniti { }
 info { }
 info { barrel-of-knowledge barrell-of-knowledge dyndns for-our groks-the groks-this here-for-more knowsitall selfip webhop }
 ing { }
 ink { }
 institute { }
+insure { }
 int { }
 int { eu }
 international { }
+investments { }
 io { }
-io { com github }
+io { com github nid }
 iq { }
 iq { com edu gov mil net org }
 ir { }
 ir { ac co gov id net org sch ايران ایران }
 is { }
 is { com cupcake edu gov int net org }
+it { }
 it { abr abruzzo ag agrigento al alessandria alto-adige altoadige an ancona andria-barletta-trani andria-trani-barletta andriabarlettatrani andriatranibarletta ao aosta aosta-valley aostavalley aoste ap aq aquila ar arezzo ascoli-piceno ascolipiceno asti at av avellino ba balsan bari barletta-trani-andria barlettatraniandria bas basilicata belluno benevento bergamo bg bi biella bl blogspot bn bo bologna bolzano bozen br brescia brindisi bs bt bz ca cagliari cal calabria caltanissetta cam campania campidano-medio campidanomedio campobasso carbonia-iglesias carboniaiglesias carrara-massa carraramassa caserta catania catanzaro cb ce cesena-forli cesenaforli ch chieti ci cl cn co como cosenza cr cremona crotone cs ct cuneo cz dell-ogliastra dellogliastra edu emilia-romagna emiliaromagna emr en enna fc fe fermo ferrara fg fi firenze florence fm foggia forli-cesena forlicesena fr friuli-v-giulia friuli-ve-giulia friuli-vegiulia friuli-venezia-giulia friuli-veneziagiulia friuli-vgiulia friuliv-giulia friulive-giulia friulivegiulia friulivenezia-giulia friuliveneziagiulia friulivgiulia frosinone fvg ge genoa genova go gorizia gov gr grosseto iglesias-carbonia iglesiascarbonia im imperia is isernia kr la-spezia laquila laspezia latina laz lazio lc le lecce lecco li lig liguria livorno lo lodi lom lombardia lombardy lt lu lucania lucca macerata mantova mar marche massa-carrara massacarrara matera mb mc me medio-campidano mediocampidano messina mi milan milano mn mo modena mol molise monza monza-brianza monza-e-della-brianza monzabrianza monzaebrianza monzaedellabrianza ms mt na naples napoli no novara nu nuoro og ogliastra olbia-tempio olbiatempio or oristano ot pa padova padua palermo parma pavia pc pd pe perugia pesaro-urbino pesarourbino pescara pg pi piacenza piedmont piemonte pisa pistoia pmn pn po pordenone potenza pr prato pt pu pug puglia pv pz ra ragusa ravenna rc re reggio-calabria reggio-emilia reggiocalabria reggioemilia rg ri rieti rimini rm rn ro roma rome rovigo sa salerno sar sardegna sardinia sassari savona si sic sicilia sicily siena siracusa so sondrio sp sr ss suedtirol sv ta taa taranto te tempio-olbia tempioolbia teramo terni tn to torino tos toscana tp tr trani-andria-barletta trani-barletta-andria traniandriabarletta tranibarlettaandria trapani trentino trentino-a-adige trentino-aadige trentino-alto-adige trentino-altoadige trentino-s-tirol trentino-stirol trentino-sud-tirol trentino-sudtirol trentino-sued-tirol trentino-suedtirol trentinoa-adige trentinoaadige trentinoalto-adige trentinoaltoadige trentinos-tirol trentinostirol trentinosud-tirol trentinosudtirol trentinosued-tirol trentinosuedtirol trento treviso trieste ts turin tuscany tv ud udine umb umbria urbino-pesaro urbinopesaro va val-d-aosta val-daosta vald-aosta valdaosta valle-aosta valle-d-aosta valle-daosta valleaosta valled-aosta valledaosta vallee-aoste valleeaoste vao varese vb vc vda ve ven veneto venezia venice verbania vercelli verona vi vibo-valentia vibovalentia vicenza viterbo vr vs vt vv }
+je { }
 je { co net org }
 jetzt { }
 jm { * }
+jo { }
 jo { com edu gov mil name net org sch }
 jobs { }
+joburg { }
 jp { }
 jp { ac ad aichi akita aomori blogspot chiba co ed ehime fukui fukuoka fukushima gifu go gr gunma hiroshima hokkaido hyogo ibaraki ishikawa iwate kagawa kagoshima kanagawa kochi kumamoto kyoto lg mie miyagi miyazaki nagano nagasaki nara ne niigata oita okayama okinawa or osaka saga saitama shiga shimane shizuoka tochigi tokushima tokyo tottori toyama wakayama yamagata yamaguchi yamanashi }
 jp { aichi } { aisai ama anjo asuke chiryu chita fuso gamagori handa hazu hekinan higashiura ichinomiya inazawa inuyama isshiki iwakura kanie kariya kasugai kira kiyosu komaki konan kota mihama miyoshi nishio nisshin obu oguchi oharu okazaki owariasahi seto shikatsu shinshiro shitara tahara takahama tobishima toei togo tokai tokoname toyoake toyohashi toyokawa toyone toyota tsushima yatomi }
@@ -720,15 +792,11 @@ jp { kagawa } { ayagawa higashikagawa kanonji kotohira manno marugame mitoyo nao
 jp { kagoshima } { akune amami hioki isa isen izumi kagoshima kanoya kawanabe kinko kouyama makurazaki matsumoto minamitane nakatane nishinoomote satsumasendai soo tarumizu yusui }
 jp { kanagawa } { aikawa atsugi ayase chigasaki ebina fujisawa hadano hakone hiratsuka isehara kaisei kamakura kiyokawa matsuda minamiashigara miura nakai ninomiya odawara oi oiso sagamihara samukawa tsukui yamakita yamato yokosuka yugawara zama zushi }
 jp { kawasaki } { * }
-jp { kitakyushu } { * }
-jp { kobe } { * }
 jp { kawasaki } { city } { ! }
+jp { kitakyushu } { * }
 jp { kitakyushu } { city } { ! }
+jp { kobe } { * }
 jp { kobe } { city } { ! }
-jp { nagoya } { city } { ! }
-jp { sapporo } { city } { ! }
-jp { sendai } { city } { ! }
-jp { yokohama } { city } { ! }
 jp { kochi } { aki geisei hidaka higashitsuno ino kagami kami kitagawa kochi mihara motoyama muroto nahari nakamura nankoku nishitosa niyodogawa ochi okawa otoyo otsuki sakawa sukumo susaki tosa tosashimizu toyo tsuno umaji yasuda yusuhara }
 jp { kumamoto } { amakusa arao aso choyo gyokuto hitoyoshi kamiamakusa kashima kikuchi kosa kumamoto mashiki mifune minamata minamioguni nagasu nishihara oguni ozu sumoto takamori uki uto yamaga yamato yatsushiro }
 jp { kyoto } { ayabe fukuchiyama higashiyama ide ine joyo kameoka kamo kita kizu kumiyama kyotamba kyotanabe kyotango maizuru minami minamiyamashiro miyazu muko nagaokakyo nakagyo nantan oyamazaki sakyo seika tanabe uji ujitawara wazuka yamashina yawata }
@@ -738,6 +806,7 @@ jp { miyazaki } { aya ebino gokase hyuga kadogawa kawaminami kijo kitagawa kitak
 jp { nagano } { achi agematsu anan aoki asahi azumino chikuhoku chikuma chino fujimi hakuba hara hiraya iida iijima iiyama iizuna ikeda ikusaka ina karuizawa kawakami kiso kisofukushima kitaaiki komagane komoro matsukawa matsumoto miasa minamiaiki minamimaki minamiminowa minowa miyada miyota mochizuki nagano nagawa nagiso nakagawa nakano nozawaonsen obuse ogawa okaya omachi omi ookuwa ooshika otaki otari sakae sakaki saku sakuho shimosuwa shinanomachi shiojiri suwa suzaka takagi takamori takayama tateshina tatsuno togakushi togura tomi ueda wada yamagata yamanouchi yasaka yasuoka }
 jp { nagasaki } { chijiwa futsu goto hasami hirado iki isahaya kawatana kuchinotsu matsuura nagasaki obama omura oseto saikai sasebo seihi shimabara shinkamigoto togitsu tsushima unzen }
 jp { nagoya } { * }
+jp { nagoya } { city } { ! }
 jp { nara } { ando gose heguri higashiyoshino ikaruga ikoma kamikitayama kanmaki kashiba kashihara katsuragi kawai kawakami kawanishi koryo kurotaki mitsue miyake nara nosegawa oji ouda oyodo sakurai sango shimoichi shimokitayama shinjo soni takatori tawaramoto tenkawa tenri uda yamatokoriyama yamatotakada yamazoe yoshino }
 jp { niigata } { aga agano gosen itoigawa izumozaki joetsu kamo kariwa kashiwazaki minamiuonuma mitsuke muika murakami myoko nagaoka niigata ojiya omi sado sanjo seiro seirou sekikawa shibata tagami tainai tochio tokamachi tsubame tsunan uonuma yahiko yoita yuzawa }
 jp { oita } { beppu bungoono bungotakada hasama hiji himeshima hita kamitsue kokonoe kuju kunisaki kusu oita saiki taketa tsukumi usa usuki yufu }
@@ -747,7 +816,9 @@ jp { osaka } { abeno chihayaakasaka chuo daito fujiidera habikino hannan higashi
 jp { saga } { ariake arita fukudomi genkai hamatama hizen imari kamimine kanzaki karatsu kashima kitagata kitahata kiyama kouhoku kyuragi nishiarita ogi omachi ouchi saga shiroishi taku tara tosu yoshinogari }
 jp { saitama } { arakawa asaka chichibu fujimi fujimino fukaya hanno hanyu hasuda hatogaya hatoyama hidaka higashichichibu higashimatsuyama honjo ina iruma iwatsuki kamiizumi kamikawa kamisato kasukabe kawagoe kawaguchi kawajima kazo kitamoto koshigaya kounosu kuki kumagaya matsubushi minano misato miyashiro miyoshi moroyama nagatoro namegawa niiza ogano ogawa ogose okegawa omiya otaki ranzan ryokami saitama sakado satte sayama shiki shiraoka soka sugito toda tokigawa tokorozawa tsurugashima urawa warabi yashio yokoze yono yorii yoshida yoshikawa yoshimi }
 jp { sapporo } { * }
+jp { sapporo } { city } { ! }
 jp { sendai } { * }
+jp { sendai } { city } { ! }
 jp { shiga } { aisho gamo higashiomi hikone koka konan kosei koto kusatsu maibara moriyama nagahama nishiazai notogawa omihachiman otsu ritto ryuoh takashima takatsuki torahime toyosato yasu }
 jp { shimane } { akagi ama gotsu hamada higashiizumo hikawa hikimi izumo kakinoki masuda matsue misato nishinoshima ohda okinoshima okuizumo shimane tamayu tsuwano unnan yakumo yasugi yatsuka }
 jp { shizuoka } { arai atami fuji fujieda fujikawa fujinomiya fukuroi gotemba haibara hamamatsu higashiizu ito iwata izu izunokuni kakegawa kannami kawanehon kawazu kikugawa kosai makinohara matsuzaki minamiizu mishima morimachi nishiizu numazu omaezaki shimada shimizu shimoda shizuoka susono yaizu yoshida }
@@ -761,6 +832,8 @@ jp { yamagata } { asahi funagata higashine iide kahoku kaminoyama kaneyama kawan
 jp { yamaguchi } { abu hagi hikari hofu iwakuni kudamatsu mitou nagato oshima shimonoseki shunan tabuse tokuyama toyota ube yuu }
 jp { yamanashi } { chuo doshi fuefuki fujikawa fujikawaguchiko fujiyoshida hayakawa hokuto ichikawamisato kai kofu koshu kosuge minami-alps minobu nakamichi nanbu narusawa nirasaki nishikatsura oshino otsuki showa tabayama tsuru uenohara yamanakako yamanashi }
 jp { yokohama } { * }
+jp { yokohama } { city } { ! }
+juegos { }
 kaufen { }
 ke { * }
 kg { }
@@ -790,25 +863,32 @@ la { }
 la { c com edu gov info int net org per }
 lacaixa { }
 land { }
+lawyer { }
 lb { }
 lb { com edu gov net org }
 lc { }
 lc { co com edu gov net org }
+lds { }
 lease { }
+lgbt { }
 li { }
 life { }
 lighting { }
 limited { }
 limo { }
 link { }
+lk { }
 lk { assn com edu gov grp hotel int ltd net ngo org sch soc web }
+loans { }
 london { }
+lotto { }
 lr { }
 lr { com edu gov net org }
 ls { }
 ls { co org }
 lt { }
 lt { gov }
+ltda { }
 lu { }
 luxe { }
 luxury { }
@@ -818,6 +898,7 @@ ly { }
 ly { com edu gov id med net org plc sch }
 ma { }
 ma { ac co gov net org press }
+madrid { }
 maison { }
 management { }
 mango { }
@@ -830,6 +911,7 @@ me { }
 me { ac co edu gov its net org priv }
 media { }
 meet { }
+melbourne { }
 meme { }
 menu { }
 mg { }
@@ -852,6 +934,7 @@ moda { }
 moe { }
 monash { }
 mormon { }
+mortgage { }
 moscow { }
 motorcycles { }
 mov { }
@@ -861,6 +944,7 @@ mr { }
 mr { blogspot gov }
 ms { }
 ms { com edu gov net org }
+mt { }
 mt { com edu net org }
 mu { }
 mu { ac co com gov net or org }
@@ -875,6 +959,7 @@ mx { blogspot com edu gob net org }
 my { }
 my { com edu gov mil name net org }
 mz { * }
+mz { teledata } { ! }
 na { }
 na { ca cc co com dr in info mobi mx name or org pro school tv us ws }
 nagoya { }
@@ -894,11 +979,13 @@ neustar { }
 new { }
 nf { }
 nf { arts com firm info net other per rec store web }
+ng { }
 ng { com edu gov mil mobi name net org sch }
 ngo { }
 nhk { }
 ni { * }
 ninja { }
+nissan { }
 nl { }
 nl { blogspot bv co }
 no { }
@@ -936,12 +1023,15 @@ no { vestfold } { sande }
 no { vf } { gs }
 no { østfold } { våler }
 np { * }
+nr { }
 nr { biz com edu gov info net org }
+nra { }
 nrw { }
 nu { }
 nu { merseine mine shacknet }
 nyc { }
-nz { * }
+nz { }
+nz { ac co cri geek gen govt health iwi kiwi maori mil māori net org parliament school }
 nz { co } { blogspot }
 okinawa { }
 om { }
@@ -951,6 +1041,7 @@ onl { }
 org { }
 org { ae blogdns blogsite boldlygoingnowhere dnsalias dnsdojo doesntexist dontexist doomdns dvrdns dynalias dyndns endofinternet endoftheinternet from-me game-host gotdns hobby-site homedns homeftp homelinux homeunix is-a-bruinsfan is-a-candidate is-a-celticsfan is-a-chef is-a-geek is-a-knight is-a-linux-user is-a-patsfan is-a-soxfan is-found is-lost is-saved is-very-bad is-very-evil is-very-good is-very-nice is-very-sweet isa-geek kicks-ass misconfused podzone readmyblog selfip sellsyourhome servebbs serveftp servegame stuff-4-sale us webhop za }
 org { dyndns } { go home }
+organic { }
 otsuka { }
 ovh { }
 pa { }
@@ -968,13 +1059,16 @@ ph { com edu gov i mil net ngo org }
 photo { }
 photography { }
 photos { }
+physio { }
 pics { }
 pictures { }
 pink { }
+pk { }
 pk { biz com edu fam gob gok gon gop gos gov info net org web }
 pl { }
 pl { 6bone agro aid art atm augustow auto babia-gora bedzin beskidy bialowieza bialystok bielawa bieszczady biz boleslawiec bydgoszcz bytom cieszyn co com czeladz czest dlugoleka edu elblag elk gda gdansk gdynia gliwice glogow gmina gniezno gorlice gov grajewo gsm ilawa info irc jaworzno jelenia-gora jgora kalisz karpacz kartuzy kaszuby katowice kazimierz-dolny kepno ketrzyn klodzko kobierzyce kolobrzeg konin konskowola krakow kutno lapy lebork legnica lezajsk limanowa lomza lowicz lubin lukow mail malbork malopolska mazowsze mazury mbone med media miasta mielec mielno mil mragowo naklo net ngo nieruchomosci nom nowaruda nysa olawa olecko olkusz olsztyn opoczno opole org ostroda ostroleka ostrowiec ostrowwlkp pc pila pisz podhale podlasie polkowice pomorskie pomorze powiat poznan priv prochowice pruszkow przeworsk pulawy radom rawa-maz realestate rel rybnik rzeszow sanok sejny sex shop siedlce sklep skoczow slask slupsk sopot sos sosnowiec stalowa-wola starachowice stargard suwalki swidnica swiebodzin swinoujscie szczecin szczytno szkola targi tarnobrzeg tgory tm tourism travel turek turystyka tychy usenet ustka walbrzych warmia warszawa waw wegrow wielun wlocl wloclawek wodzislaw wolomin wroc wroclaw zachpomor zagan zakopane zarow zgora zgorzelec }
 pl { gov } { pa po so sr starostwo ug um upow uw }
+place { }
 plumbing { }
 pm { }
 pn { }
@@ -983,11 +1077,13 @@ post { }
 pr { }
 pr { ac biz com edu est gov info isla name net org pro prof }
 praxi { }
+press { }
 pro { }
 pro { aca bar cpa eng jur law med }
 prod { }
 productions { }
 properties { }
+property { }
 ps { }
 ps { com edu gov net org plo sec }
 pt { }
@@ -1003,6 +1099,7 @@ qpon { }
 quebec { }
 re { }
 re { asso blogspot com nom }
+realtor { }
 recipes { }
 red { }
 rehab { }
@@ -1012,6 +1109,7 @@ ren { }
 rentals { }
 repair { }
 report { }
+republican { }
 rest { }
 reviews { }
 rich { }
@@ -1022,8 +1120,9 @@ rocks { }
 rodeo { }
 rs { }
 rs { ac co edu gov in org }
+rsvp { }
 ru { }
-ru { ac adygeya altai amur amursk arkhangelsk astrakhan baikal bashkiria belgorod bir bryansk buryatia cbg chel chelyabinsk chita chukotka chuvashia cmw com dagestan dudinka e-burg edu fareast gov grozny int irkutsk ivanovo izhevsk jamal jar joshkar-ola k-uralsk kalmykia kaluga kamchatka karelia kazan kchr kemerovo khabarovsk khakassia khv kirov kms koenig komi kostroma krasnoyarsk kuban kurgan kursk kustanai kuzbass lipetsk magadan magnitka mari mari-el marine mil mordovia mosreg msk murmansk mytis nakhodka nalchik net nkz nnov norilsk nov novosibirsk nsk omsk orenburg org oryol oskol palana penza perm pp pskov ptz pyatigorsk rnd rubtsovsk ryazan sakhalin samara saratov simbirsk smolensk snz spb stavropol stv surgut syzran tambov tatarstan test tom tomsk tsaritsyn tsk tula tuva tver tyumen udm udmurtia ulan-ude vdonsk vladikavkaz vladimir vladivostok volgograd vologda voronezh vrn vyatka yakutia yamal yaroslavl yekaterinburg yuzhno-sakhalinsk zgrad }
+ru { ac adygeya altai amur amursk arkhangelsk astrakhan baikal bashkiria belgorod bir bryansk buryatia cbg chel chelyabinsk chita chukotka chuvashia cmw com dagestan dudinka e-burg edu fareast gov grozny int irkutsk ivanovo izhevsk jamal jar joshkar-ola k-uralsk kalmykia kaluga kamchatka karelia kazan kchr kemerovo khabarovsk khakassia khv kirov kms koenig komi kostroma krasnoyarsk kuban kurgan kursk kustanai kuzbass lipetsk magadan magnitka mari mari-el marine mil mordovia mosreg msk murmansk mytis nakhodka nalchik net nkz nnov norilsk nov novosibirsk nsk omsk orenburg org oryol oskol palana penza perm pp ptz pyatigorsk rnd rubtsovsk ryazan sakhalin samara saratov simbirsk smolensk snz spb stavropol stv surgut syzran tambov tatarstan test tom tomsk tsaritsyn tsk tula tuva tver tyumen udm udmurtia ulan-ude vdonsk vladikavkaz vladimir vladivostok volgograd vologda voronezh vrn vyatka yakutia yamal yaroslavl yekaterinburg yuzhno-sakhalinsk zgrad }
 ruhr { }
 rw { }
 rw { ac co com edu gouv gov int mil net }
@@ -1031,23 +1130,30 @@ ryukyu { }
 sa { }
 sa { com edu gov med net org pub sch }
 saarland { }
+samsung { }
+sap { }
 sb { }
 sb { com edu gov net org }
 sc { }
 sc { com edu gov net org }
 sca { }
 scb { }
+schmidt { }
+scholarships { }
 schule { }
 scot { }
 sd { }
 sd { com edu gov info med net org tv }
-se { a ac b bd blogspot brand c d e f fh fhsk fhv g h i k komforb kommunalforbund komvux l lanbib m n naturbruksgymn o org p parti pp press r s t tm u w x y z }
+se { }
+se { a ac b bd blogspot brand c com d e f fh fhsk fhv g h i k komforb kommunalforbund komvux l lanbib m n naturbruksgymn o org p parti pp press r s t tm u w x y z }
+seat { }
 services { }
 sexy { }
 sg { }
 sg { blogspot com edu gov net org per }
 sh { }
 sh { com gov mil net org }
+sharp { }
 shiksha { }
 shoes { }
 shriram { }
@@ -1064,10 +1170,12 @@ sn { art com edu gouv org perso univ }
 so { }
 so { com net org }
 social { }
+software { }
 sohu { }
 solar { }
 solutions { }
 soy { }
+space { }
 spiegel { }
 sr { }
 st { }
@@ -1076,6 +1184,7 @@ su { }
 supplies { }
 supply { }
 support { }
+surgery { }
 suzuki { }
 sv { }
 sv { com edu gob org red }
@@ -1086,7 +1195,9 @@ sy { com edu gov mil net org }
 systems { }
 sz { }
 sz { ac co org }
+tatar { }
 tattoo { }
+tax { }
 tc { }
 td { }
 td { blogspot }
@@ -1098,6 +1209,7 @@ th { }
 th { ac co go in mi net or }
 tienda { }
 tips { }
+tirol { }
 tj { }
 tj { ac biz co com edu go gov int mil name net nic org test web }
 tk { }
@@ -1112,16 +1224,20 @@ to { com edu gov mil net org }
 today { }
 tokyo { }
 tools { }
+top { }
+toshiba { }
 town { }
 toys { }
 tp { }
 tr { * }
 tr { nc } { gov }
+tr { nic } { ! }
 trade { }
 training { }
 travel { }
 tt { }
 tt { aero biz co com coop edu gov info int jobs mobi museum name net org pro travel }
+tv { }
 tv { better-than dyndns on-the-web worse-than }
 tw { }
 tw { blogspot club com ebiz edu game gov idv mil net org 商業 組織 網路 }
@@ -1131,11 +1247,13 @@ ua { }
 ua { cherkassy cherkasy chernigov chernihiv chernivtsi chernovtsy ck cn co com cr crimea cv dn dnepropetrovsk dnipropetrovsk dominic donetsk dp edu gov if in ivano-frankivsk kh kharkiv kharkov kherson khmelnitskiy khmelnytskyi kiev kirovograd km kr krym ks kv kyiv lg lt lugansk lutsk lv lviv mk mykolaiv net nikolaev od odesa odessa org pl poltava pp rivne rovno rv sb sebastopol sevastopol sm sumy te ternopil uz uzhgorod vinnica vinnytsia vn volyn yalta zaporizhzhe zaporizhzhia zhitomir zhytomyr zp zt }
 ug { }
 ug { ac co com go ne or org sc }
-uk { * }
+uk { }
+uk { ac co gov ltd me net nhs org plc police }
 uk { co } { blogspot }
 uk { sch } { * }
 university { }
 uno { }
+uol { }
 uy { }
 uy { com edu gub mil net org }
 uz { }
@@ -1145,11 +1263,13 @@ vacations { }
 vc { }
 vc { com edu gov mil net org }
 ve { }
-ve { co com e12 edu gov info mil net org web }
+ve { arts co com e12 edu firm gob gov info int mil net org rec store tec web }
 vegas { }
 ventures { }
+versicherung { }
 vet { }
 vg { }
+vi { }
 vi { co com k12 net org }
 viajes { }
 villas { }
@@ -1163,10 +1283,14 @@ voting { }
 voto { }
 voyage { }
 vu { }
+vu { com edu net org }
+wales { }
 wang { }
 watch { }
 webcam { }
+website { }
 wed { }
+wedding { }
 wf { }
 whoswho { }
 wien { }
@@ -1182,10 +1306,14 @@ wtf { }
 xxx { }
 xyz { }
 yachts { }
+yandex { }
 ye { * }
+yoga { }
 yokohama { }
+youtube { }
 yt { }
 za { * }
+zip { }
 zm { * }
 zone { }
 zw { * }
@@ -1198,6 +1326,7 @@ zw { * }
 рф { }
 сайт { }
 срб { }
+срб { ак обр од орг пр упр }
 укр { }
 қаз { }
 الاردن { }
@@ -1253,6 +1382,7 @@ zw { * }
 商店 { }
 商标 { }
 在线 { }
+娱乐 { }
 广东 { }
 我爱你 { }
 手机 { }
@@ -1264,6 +1394,7 @@ zw { * }
 移动 { }
 组织机构 { }
 网址 { }
+网店 { }
 网络 { }
 臺灣 { }
 集团 { }

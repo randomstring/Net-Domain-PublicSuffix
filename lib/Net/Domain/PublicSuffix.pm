@@ -250,7 +250,6 @@ hostnames. Hostnames need to be decoded before calling base_domain().
 # http://www.information.aero/registration/policies/Release_of_reserved_names
 
 @special_rules = split "\n", << '_END_OF_SPECIAL_DATA_';
-
 # .us is "special" see http://en.wikipedia.org/wiki/.us
 us { ak al ar az ca co ct de fl ga hi ia id il in ks ky la ma md me mi mn mo ms mt nc nd ne nh nj nm nv ny oh ok or pa ri sc sd tn tx ut va vt wa wi wv wy as dc gu pr vi }
 us { ak al ar az ca co ct de fl ga hi ia id il in ks ky la ma md me mi mn mo ms mt nc nd ne nh nj nm nv ny oh ok or pa ri sc sd tn tx ut va vt wa wi wv wy as dc gu pr vi } { * } { city ci town vil village co }
@@ -260,69 +259,38 @@ us { ma } { k12 } { pvt chtr paroch }
 us { dni fed is-by isa kids land-4-sale nsn stuff-4-sale }
 us { }
 
-## these are left out of the publicsuffix list. I got these from the
-## wikipedia and the controling NIC
-
-## can.br are for canidates in elections, maybe ephemeral
+#
+# these are left out of the publicsuffix list. I got these from the
+# wikipedia and the controling NIC
+#
+# can.br are for canidates in elections, maybe ephemeral
 br { can }
-
-## can't find indication that org.by is reserved, but seems to be used as a 2nd level domain in practice
+# can't find indication that org.by is reserved, but seems to be used as a 2nd level domain in practice
 by { org }
-
-## cc : http://en.wikipedia.org/wiki/.cc
+# cc : http://en.wikipedia.org/wiki/.cc
 cc { com net edu org cc co cu }
-
-## can't find refernce to it, but seems to have a number of legacy 2 level domains on co.cu
+# can't find refernce to it, but seems to have a number of legacy 2 level domains on co.cu
 cu { co }
-
 #http://en.wikipedia.org/wiki/.cy
 cy { ac net gov org pro name ekloges tm ltd biz press parliament com }
-
-## evidence of legacy sch.gg https://www.google.com/search?q=site%3Asch.gg
+# evidence of legacy sch.gg https://www.google.com/search?q=site%3Asch.gg
 gg { sch }
-
-## http://en.wikipedia.org/wiki/.it
-## cannot find a conprehensive list, maybe wildcard rules would be better?
-## it { * } { comune provincia regione }
+# http://en.wikipedia.org/wiki/.it
+# cannot find a conprehensive list, maybe wildcard rules would be better?
+# it { * } { comune provincia regione }
 it { barletta-andria-trani }
-
-## both of these exist in the wild
+# both of these exist in the wild
 je { gov sch }
-
-## publicsuffix is missing ac.lk rule
+# publicsuffix is missing ac.lk rule
 lk { ac }
-
-## publicsuffix is missing gov.mt rule
+# publicsuffix is missing gov.mt rule
 mt { gov }
-
-## publicsuffix is missing co.nr rule
+# publicsuffix is missing co.nr rule
 nr { co }
-
 # missing .ru rule
 ru { pskov }
-
 # missing .vi rules. .gov.vi is used
 vi { edu gov }
-
-## for bd the rule "bd { * }" covers these special cases as only 2 level domains are allowed
-# bd { ac com edu gov net org }
-## for bn the rule "bn { * }" covers these special cases as only 2 level domains are allowed
-# bn { com gov }
-## covered by publicsuffix *.ke rule
-#ke { ac co go or ne sc me mobi info }
-## covered by publicsuffix *.kw rule
-#kw { com edu gov net org }
-## covered by publicsuffix *.ni rule
-#ni { com edu }
-## covered by publicsuffix *.np rule
-#np { com gov org }
-## covered by publicsuffix *.ye rule
-#ye { gov }
-## covered by publicsuffix *.zm rule
-#zm { co }
-## covered by publicsuffix *.zw rule
-#zw { co }
-
 # http://en.wikipedia.org/wiki/.za
 # http://www.internet.org.za/slds.html
 # covered by *.za rule
@@ -330,27 +298,6 @@ vi { edu gov }
 # missing school.za rule
 za { school } { ! }
 za { school } { escape fs gp kzn mpm ncape lp nw wcape }
-
-# http://en.wikipedia.org/wiki/.uk
-# covered by the .uk rule
-#uk { jcpc judiciary mod nic sch supremecourt }
-
-# duplicate publicsuffix rules
-#mz { teledata } { ! }
-#tr { nic } { ! }
-
-# old depreciated rules
-#uk { bl } { ! }
-#uk { british-library } { ! }
-#uk { gov } { ! }
-#uk { jet } { ! }
-#uk { mod } { ! }
-#uk { national-library-scotland } { ! }
-#uk { nel } { ! }
-#uk { nic } { ! }
-#uk { nls } { ! }
-#uk { parliament } { ! }
-
 _END_OF_SPECIAL_DATA_
 
 @publicsuffix_rules = split "\n", << '_END_OF_PUBLICSUFFIX_DATA_';

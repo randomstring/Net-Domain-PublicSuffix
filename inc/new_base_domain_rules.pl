@@ -16,12 +16,19 @@ use strict;
 
 my $END_TOK = '@';
 
+my $url = 'https://publicsuffix.org/list/effective_tld_names.dat';
 my $tld_filename = "effective_tld_names.dat.new";
 
 my $filename = shift @ARGV;
 if (($filename eq "") || (! -f $filename))
 {
     $filename = $tld_filename;
+}
+
+if (! -f $filename)
+{
+    print "Fetching new TLD list from $url\n";
+    `curl -s $url > $filename`;
 }
 
 open (my $fh, '<', $filename) or die("cannot open TLD source file [$filename] $!");

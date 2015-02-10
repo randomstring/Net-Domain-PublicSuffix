@@ -82,7 +82,7 @@ package Net::Domain::PublicSuffix;
 
 use strict;
 
-our $VERSION = '1.02';
+our $VERSION = '1.03';
 our @ISA = qw(Exporter);
 
 our @EXPORT_OK = qw( base_domain public_suffix has_valid_tld set_debug_level dump_tree );

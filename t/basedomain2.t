@@ -552,7 +552,7 @@ mil.br
 mp.br
 mus.br
 net.br
-nom.br
+*.nom.br
 not.br
 ntr.br
 odo.br
@@ -916,9 +916,6 @@ nom.es
 org.es
 gob.es
 edu.es
-
-// et : http://en.wikipedia.org/wiki/.et
-*.et
 
 // eu : http://en.wikipedia.org/wiki/.eu
 eu
@@ -5386,9 +5383,7 @@ tourism.pl
 travel.pl
 turystyka.pl
 // ICM functional domains (icm.edu.pl)
-6bone.pl
 art.pl
-mbone.pl
 // Government domains (administred by ippt.gov.pl)
 gov.pl
 uw.gov.pl
@@ -5400,10 +5395,6 @@ so.gov.pl
 sr.gov.pl
 po.gov.pl
 pa.gov.pl
-// other functional domains
-ngo.pl
-irc.pl
-usenet.pl
 // NASK geographical domains : http://www.dns.pl/english/dns-regiony.html
 augustow.pl
 babia-gora.pl
@@ -5490,7 +5481,6 @@ rybnik.pl
 rzeszow.pl
 sanok.pl
 sejny.pl
-siedlce.pl
 slask.pl
 slupsk.pl
 sosnowiec.pl
@@ -5721,7 +5711,6 @@ mari.ru
 mari-el.ru
 marine.ru
 mordovia.ru
-mosreg.ru
 msk.ru
 murmansk.ru
 nalchik.ru
@@ -6106,8 +6095,6 @@ mil.to
 tp
 
 // tr : http://en.wikipedia.org/wiki/.tr
-*.tr
-!nic.tr
 // Used by government in the TRNC
 // http://en.wikipedia.org/wiki/.nc.tr
 gov.nc.tr

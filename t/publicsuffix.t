@@ -73,10 +73,10 @@ checkPublicSuffix('b.example.uk.com', 'example.uk.com');
 checkPublicSuffix('a.b.example.uk.com', 'example.uk.com');
 checkPublicSuffix('test.ac', 'test.ac');
 // TLD with only 1 (wildcard) rule.
-checkPublicSuffix('et', null);
-checkPublicSuffix('c.et', null);
-checkPublicSuffix('b.c.et', 'b.c.et');
-checkPublicSuffix('a.b.c.et', 'b.c.et');
+checkPublicSuffix('er', null);
+checkPublicSuffix('c.er', null);
+checkPublicSuffix('b.c.er', 'b.c.er');
+checkPublicSuffix('a.b.c.er', 'b.c.er');
 // TLD with only 1 (wildcard) and 3rd level rules
 checkPublicSuffix('cy', null);
 checkPublicSuffix('c.cy', null);

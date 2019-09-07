@@ -37,8 +37,8 @@ string for hostnames with an invalid public suffix.
 
 public\_suffix() is not an exact replacement for
 [Mozilla::PublicSuffix](https://metacpan.org/pod/Mozilla::PublicSuffix). See the tests run in publicsuffix.t for
-notable differences. I think some of the test from publicsuffix.org
-are just wrong. For instance, publicsuffix.org thing that
+notable differences. I think some of the tests from publicsuffix.org
+are just wrong. For instance, publicsuffix.org thinks that
 "example.example" (a non-existance TLD) should pass, but "test.om" (a
 non-existent second level domain for the valid TLD om) should not.
 

@@ -143,7 +143,7 @@ gen_strings (BDNODE *root, AV *levels, int level)
     BDNODE *ptr;
 
     if (av_len(levels) < level) {
-        // no more levels, insert sentinal to say this is a valid end of a base domain
+        // no more levels, insert sentinel to say this is a valid end of a base domain
         if (root->next[0] == NULL) {
             root->next[0] = (BDNODE *)safemalloc(sizeof(BDNODE));
             Zero(root->next[0],1,BDNODE);
@@ -151,7 +151,7 @@ gen_strings (BDNODE *root, AV *levels, int level)
         return;
     }
     else {
-        // For each domain part (word) we recersively generate the Trie stucture 
+        // For each domain part (word) we recersively generate the Trie structure
         // of the all the deeper levels.
         cur_level = av_fetch (levels, level, 0);
         wordav = (AV *) SvRV (*cur_level);
@@ -166,7 +166,7 @@ gen_strings (BDNODE *root, AV *levels, int level)
     }
 }
 
-// match_word - determind if a given string exists in a portion of the TRIE
+// match_word - determined if a given string exists in a portion of the TRIE
 // Input:
 //     ptr  - pointer to a sup-part of the TRIE
 //     str  - pointer to the string we're trying to match
@@ -416,7 +416,7 @@ _base_domain (SV *domain, int strict)
 		    }
 		    if (wildcard_backtrack_ptr) {
 		        // if we see a word match, no backtracking 
-		        if (debug) { printf ("removeing wildcard_backtrack_ptr\n"); }
+		        if (debug) { printf ("removing wildcard_backtrack_ptr\n"); }
 			wildcard_backtrack_ptr = NULL;
 		    }
                 }

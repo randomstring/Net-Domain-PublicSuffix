@@ -123,6 +123,11 @@ these additional missing rules.
 Net::Domain::PublicSuffix does not support punycode
 hostnames. Hostnames need to be decoded before calling base\_domain().
 
+# CAVEATS
+
+See Ryan Sleevi's [Public Suffix List Problems](https://github.com/sleevi/psl-problems) 
+for potential problems with using the public suffix list.
+
 # AUTHOR
 
     Blekko.com
